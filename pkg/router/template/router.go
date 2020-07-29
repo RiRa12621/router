@@ -553,7 +553,7 @@ func (r *templateRouter) reloadRouter(shutdown bool) error {
 	if shutdown {
 		cmd.Env = append(os.Environ(), "ROUTER_SHUTDOWN=true")
 	}
-	out, err := cmd.CombinedOutput()
+	out, err := cmd.Output()
 	if err != nil {
 		return fmt.Errorf("error reloading router: %v\n%s", err, string(out))
 	}
